@@ -94,15 +94,17 @@ NodeContainer.prototype.cssFloat = function(attribute) {
 
 NodeContainer.prototype.fontWeight = function() {
     var weight = this.css("fontWeight");
-    switch(parseInt(weight, 10)){
-    case 401:
-        weight = "bold";
-        break;
-    case 400:
-        weight = "normal";
-        break;
+    switch (weight) {
+        case 'normal':
+            weight = 400;
+            break;
+        case 'bold':
+            weight = 700;
+            break;
+        default:
+            weight = parseInt(weight, 10);
     }
-    return weight;
+    return isNaN(weight) ? 400 : weight;
 };
 
 NodeContainer.prototype.parseClip = function() {
